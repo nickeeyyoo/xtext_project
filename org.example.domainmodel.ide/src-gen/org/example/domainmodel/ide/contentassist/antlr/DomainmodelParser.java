@@ -37,6 +37,8 @@ public class DomainmodelParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getAbstractElementAccess().getAlternatives(), "rule__AbstractElement__Alternatives");
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
+					put(grammarAccess.getEntityAccess().getAlternatives_0(), "rule__Entity__Alternatives_0");
+					put(grammarAccess.getVisibilityAccess().getAlternatives(), "rule__Visibility__Alternatives");
 					put(grammarAccess.getPackageDeclarationAccess().getGroup(), "rule__PackageDeclaration__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
@@ -44,19 +46,24 @@ public class DomainmodelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
 					put(grammarAccess.getDataTypeAccess().getGroup(), "rule__DataType__Group__0");
 					put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
-					put(grammarAccess.getEntityAccess().getGroup_4(), "rule__Entity__Group_4__0");
+					put(grammarAccess.getEntityAccess().getGroup_3(), "rule__Entity__Group_3__0");
 					put(grammarAccess.getFeatureAccess().getGroup(), "rule__Feature__Group__0");
+					put(grammarAccess.getModifierAccess().getGroup(), "rule__Modifier__Group__0");
 					put(grammarAccess.getDomainmodelAccess().getElementsAssignment(), "rule__Domainmodel__ElementsAssignment");
 					put(grammarAccess.getPackageDeclarationAccess().getNameAssignment_1(), "rule__PackageDeclaration__NameAssignment_1");
 					put(grammarAccess.getPackageDeclarationAccess().getElementsAssignment_3(), "rule__PackageDeclaration__ElementsAssignment_3");
 					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1(), "rule__Import__ImportedNamespaceAssignment_1");
 					put(grammarAccess.getDataTypeAccess().getNameAssignment_1(), "rule__DataType__NameAssignment_1");
-					put(grammarAccess.getEntityAccess().getNameAssignment_3(), "rule__Entity__NameAssignment_3");
-					put(grammarAccess.getEntityAccess().getSuperTypeAssignment_4_1(), "rule__Entity__SuperTypeAssignment_4_1");
-					put(grammarAccess.getEntityAccess().getFeaturesAssignment_6(), "rule__Entity__FeaturesAssignment_6");
-					put(grammarAccess.getFeatureAccess().getManyAssignment_0(), "rule__Feature__ManyAssignment_0");
-					put(grammarAccess.getFeatureAccess().getNameAssignment_1(), "rule__Feature__NameAssignment_1");
-					put(grammarAccess.getFeatureAccess().getTypeAssignment_3(), "rule__Feature__TypeAssignment_3");
+					put(grammarAccess.getEntityAccess().getNameAssignment_2(), "rule__Entity__NameAssignment_2");
+					put(grammarAccess.getEntityAccess().getSuperTypeAssignment_3_1(), "rule__Entity__SuperTypeAssignment_3_1");
+					put(grammarAccess.getEntityAccess().getFeaturesAssignment_5(), "rule__Entity__FeaturesAssignment_5");
+					put(grammarAccess.getFeatureAccess().getManyAssignment_1(), "rule__Feature__ManyAssignment_1");
+					put(grammarAccess.getFeatureAccess().getNameAssignment_2(), "rule__Feature__NameAssignment_2");
+					put(grammarAccess.getFeatureAccess().getTypeAssignment_4(), "rule__Feature__TypeAssignment_4");
+					put(grammarAccess.getModifierAccess().getStaticAssignment_1_0(), "rule__Modifier__StaticAssignment_1_0");
+					put(grammarAccess.getModifierAccess().getFinalAssignment_1_1(), "rule__Modifier__FinalAssignment_1_1");
+					put(grammarAccess.getModifierAccess().getVisibilityAssignment_1_2(), "rule__Modifier__VisibilityAssignment_1_2");
+					put(grammarAccess.getModifierAccess().getUnorderedGroup_1(), "rule__Modifier__UnorderedGroup_1");
 				}
 			};
 		}

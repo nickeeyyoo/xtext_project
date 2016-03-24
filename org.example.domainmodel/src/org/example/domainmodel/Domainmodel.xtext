@@ -37,4 +37,11 @@
         '}';
      
     Feature:
-        (many?='many')? name=ID ':' type=[Type|QualifiedName];
+       Modifier (many?='many')? name=ID ':' type=[Type|QualifiedName];
+        
+    enum Visibility:
+    	PUBLIC='public' |  PRIVATE='private' | PROTECTED='protected';
+    	
+    Modifier:
+    	{Modifier}((static?='static')? &(final='final')? & (visibility=Visibility)?);
+    

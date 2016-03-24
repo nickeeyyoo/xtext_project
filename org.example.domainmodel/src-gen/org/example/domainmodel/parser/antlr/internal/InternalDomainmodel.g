@@ -23,6 +23,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -424,24 +425,23 @@ ruleEntity returns [EObject current=null]
 		(
 			otherlv_0='public'
 			{
-				newLeafNode(otherlv_0, grammarAccess.getEntityAccess().getPublicKeyword_0());
+				newLeafNode(otherlv_0, grammarAccess.getEntityAccess().getPublicKeyword_0_0());
 			}
-		)?
-		(
+			    |
 			otherlv_1='private'
 			{
-				newLeafNode(otherlv_1, grammarAccess.getEntityAccess().getPrivateKeyword_1());
+				newLeafNode(otherlv_1, grammarAccess.getEntityAccess().getPrivateKeyword_0_1());
 			}
 		)?
 		otherlv_2='entity'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getEntityAccess().getEntityKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getEntityAccess().getEntityKeyword_1());
 		}
 		(
 			(
 				lv_name_3_0=RULE_ID
 				{
-					newLeafNode(lv_name_3_0, grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_3_0());
+					newLeafNode(lv_name_3_0, grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -458,7 +458,7 @@ ruleEntity returns [EObject current=null]
 		(
 			otherlv_4='extends'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getEntityAccess().getExtendsKeyword_4_0());
+				newLeafNode(otherlv_4, grammarAccess.getEntityAccess().getExtendsKeyword_3_0());
 			}
 			(
 				(
@@ -468,7 +468,7 @@ ruleEntity returns [EObject current=null]
 						}
 					}
 					{
-						newCompositeNode(grammarAccess.getEntityAccess().getSuperTypeEntityCrossReference_4_1_0());
+						newCompositeNode(grammarAccess.getEntityAccess().getSuperTypeEntityCrossReference_3_1_0());
 					}
 					ruleQualifiedName
 					{
@@ -479,12 +479,12 @@ ruleEntity returns [EObject current=null]
 		)?
 		otherlv_6='{'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_5());
+			newLeafNode(otherlv_6, grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_4());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getEntityAccess().getFeaturesFeatureParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getEntityAccess().getFeaturesFeatureParserRuleCall_5_0());
 				}
 				lv_features_7_0=ruleFeature
 				{
@@ -502,7 +502,7 @@ ruleEntity returns [EObject current=null]
 		)*
 		otherlv_8='}'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_7());
+			newLeafNode(otherlv_8, grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;
@@ -523,11 +523,19 @@ ruleFeature returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		{
+			newCompositeNode(grammarAccess.getFeatureAccess().getModifierParserRuleCall_0());
+		}
+		this_Modifier_0=ruleModifier
+		{
+			$current = $this_Modifier_0.current;
+			afterParserOrEnumRuleCall();
+		}
 		(
 			(
-				lv_many_0_0='many'
+				lv_many_1_0='many'
 				{
-					newLeafNode(lv_many_0_0, grammarAccess.getFeatureAccess().getManyManyKeyword_0_0());
+					newLeafNode(lv_many_1_0, grammarAccess.getFeatureAccess().getManyManyKeyword_1_0());
 				}
 				{
 					if ($current==null) {
@@ -539,9 +547,9 @@ ruleFeature returns [EObject current=null]
 		)?
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getFeatureAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getFeatureAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -550,14 +558,14 @@ ruleFeature returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-		otherlv_2=':'
+		otherlv_3=':'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getFeatureAccess().getColonKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getFeatureAccess().getColonKeyword_3());
 		}
 		(
 			(
@@ -567,13 +575,162 @@ ruleFeature returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getFeatureAccess().getTypeTypeCrossReference_3_0());
+					newCompositeNode(grammarAccess.getFeatureAccess().getTypeTypeCrossReference_4_0());
 				}
 				ruleQualifiedName
 				{
 					afterParserOrEnumRuleCall();
 				}
 			)
+		)
+	)
+;
+
+// Entry rule entryRuleModifier
+entryRuleModifier returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getModifierRule()); }
+	iv_ruleModifier=ruleModifier
+	{ $current=$iv_ruleModifier.current; }
+	EOF;
+
+// Rule Modifier
+ruleModifier returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getModifierAccess().getModifierAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				{ 
+				  getUnorderedGroupHelper().enter(grammarAccess.getModifierAccess().getUnorderedGroup_1());
+				}
+				(
+					(
+			(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getModifierAccess().getUnorderedGroup_1(), 0)}?=>(
+					{
+						getUnorderedGroupHelper().select(grammarAccess.getModifierAccess().getUnorderedGroup_1(), 0);
+					}
+								({true}?=>((
+									lv_static_2_0='static'
+									{
+										newLeafNode(lv_static_2_0, grammarAccess.getModifierAccess().getStaticStaticKeyword_1_0_0());
+									}
+									{
+										if ($current==null) {
+											$current = createModelElement(grammarAccess.getModifierRule());
+										}
+										setWithLastConsumed($current, "static", true, "static");
+									}
+								)
+								))
+					{ 
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getModifierAccess().getUnorderedGroup_1());
+					}
+				)
+			)|
+			(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getModifierAccess().getUnorderedGroup_1(), 1)}?=>(
+					{
+						getUnorderedGroupHelper().select(grammarAccess.getModifierAccess().getUnorderedGroup_1(), 1);
+					}
+								({true}?=>((
+									lv_final_3_0='final'
+									{
+										newLeafNode(lv_final_3_0, grammarAccess.getModifierAccess().getFinalFinalKeyword_1_1_0());
+									}
+									{
+										if ($current==null) {
+											$current = createModelElement(grammarAccess.getModifierRule());
+										}
+										setWithLastConsumed($current, "final", lv_final_3_0, "final");
+									}
+								)
+								))
+					{ 
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getModifierAccess().getUnorderedGroup_1());
+					}
+				)
+			)|
+			(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getModifierAccess().getUnorderedGroup_1(), 2)}?=>(
+					{
+						getUnorderedGroupHelper().select(grammarAccess.getModifierAccess().getUnorderedGroup_1(), 2);
+					}
+								({true}?=>((
+									{
+										newCompositeNode(grammarAccess.getModifierAccess().getVisibilityVisibilityEnumRuleCall_1_2_0());
+									}
+									lv_visibility_4_0=ruleVisibility
+									{
+										if ($current==null) {
+											$current = createModelElementForParent(grammarAccess.getModifierRule());
+										}
+										set(
+											$current,
+											"visibility",
+											lv_visibility_4_0,
+											"org.example.domainmodel.Domainmodel.Visibility");
+										afterParserOrEnumRuleCall();
+									}
+								)
+								))
+					{ 
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getModifierAccess().getUnorderedGroup_1());
+					}
+				)
+			)
+					)*
+				)
+			)
+				{ 
+				  getUnorderedGroupHelper().leave(grammarAccess.getModifierAccess().getUnorderedGroup_1());
+				}
+		)
+	)
+;
+
+// Rule Visibility
+ruleVisibility returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='public'
+			{
+				$current = grammarAccess.getVisibilityAccess().getPUBLICEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getVisibilityAccess().getPUBLICEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='private'
+			{
+				$current = grammarAccess.getVisibilityAccess().getPRIVATEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getVisibilityAccess().getPRIVATEEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='protected'
+			{
+				$current = grammarAccess.getVisibilityAccess().getPROTECTEDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getVisibilityAccess().getPROTECTEDEnumLiteralDeclaration_2());
+			}
 		)
 	)
 ;

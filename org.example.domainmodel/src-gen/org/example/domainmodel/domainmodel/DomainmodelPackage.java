@@ -5,6 +5,7 @@ package org.example.domainmodel.domainmodel;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -282,13 +283,32 @@ public interface DomainmodelPackage extends EPackage
   int FEATURE = 7;
 
   /**
+   * The number of structural features of the '<em>Feature</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.example.domainmodel.domainmodel.impl.ModifierImpl <em>Modifier</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.example.domainmodel.domainmodel.impl.ModifierImpl
+   * @see org.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getModifier()
+   * @generated
+   */
+  int MODIFIER = 8;
+
+  /**
    * The feature id for the '<em><b>Many</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FEATURE__MANY = 0;
+  int MODIFIER__MANY = FEATURE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -297,7 +317,7 @@ public interface DomainmodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FEATURE__NAME = 1;
+  int MODIFIER__NAME = FEATURE_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -306,16 +326,53 @@ public interface DomainmodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FEATURE__TYPE = 2;
+  int MODIFIER__TYPE = FEATURE_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Feature</em>' class.
+   * The feature id for the '<em><b>Static</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FEATURE_FEATURE_COUNT = 3;
+  int MODIFIER__STATIC = FEATURE_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Final</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODIFIER__FINAL = FEATURE_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Visibility</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODIFIER__VISIBILITY = FEATURE_FEATURE_COUNT + 5;
+
+  /**
+   * The number of structural features of the '<em>Modifier</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODIFIER_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 6;
+
+  /**
+   * The meta object id for the '{@link org.example.domainmodel.domainmodel.Visibility <em>Visibility</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.example.domainmodel.domainmodel.Visibility
+   * @see org.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getVisibility()
+   * @generated
+   */
+  int VISIBILITY = 9;
 
 
   /**
@@ -476,37 +533,90 @@ public interface DomainmodelPackage extends EPackage
   EClass getFeature();
 
   /**
-   * Returns the meta object for the attribute '{@link org.example.domainmodel.domainmodel.Feature#isMany <em>Many</em>}'.
+   * Returns the meta object for class '{@link org.example.domainmodel.domainmodel.Modifier <em>Modifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Modifier</em>'.
+   * @see org.example.domainmodel.domainmodel.Modifier
+   * @generated
+   */
+  EClass getModifier();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.example.domainmodel.domainmodel.Modifier#isMany <em>Many</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Many</em>'.
-   * @see org.example.domainmodel.domainmodel.Feature#isMany()
-   * @see #getFeature()
+   * @see org.example.domainmodel.domainmodel.Modifier#isMany()
+   * @see #getModifier()
    * @generated
    */
-  EAttribute getFeature_Many();
+  EAttribute getModifier_Many();
 
   /**
-   * Returns the meta object for the attribute '{@link org.example.domainmodel.domainmodel.Feature#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.example.domainmodel.domainmodel.Modifier#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.example.domainmodel.domainmodel.Feature#getName()
-   * @see #getFeature()
+   * @see org.example.domainmodel.domainmodel.Modifier#getName()
+   * @see #getModifier()
    * @generated
    */
-  EAttribute getFeature_Name();
+  EAttribute getModifier_Name();
 
   /**
-   * Returns the meta object for the reference '{@link org.example.domainmodel.domainmodel.Feature#getType <em>Type</em>}'.
+   * Returns the meta object for the reference '{@link org.example.domainmodel.domainmodel.Modifier#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Type</em>'.
-   * @see org.example.domainmodel.domainmodel.Feature#getType()
-   * @see #getFeature()
+   * @see org.example.domainmodel.domainmodel.Modifier#getType()
+   * @see #getModifier()
    * @generated
    */
-  EReference getFeature_Type();
+  EReference getModifier_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.example.domainmodel.domainmodel.Modifier#isStatic <em>Static</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Static</em>'.
+   * @see org.example.domainmodel.domainmodel.Modifier#isStatic()
+   * @see #getModifier()
+   * @generated
+   */
+  EAttribute getModifier_Static();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.example.domainmodel.domainmodel.Modifier#getFinal <em>Final</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Final</em>'.
+   * @see org.example.domainmodel.domainmodel.Modifier#getFinal()
+   * @see #getModifier()
+   * @generated
+   */
+  EAttribute getModifier_Final();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.example.domainmodel.domainmodel.Modifier#getVisibility <em>Visibility</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Visibility</em>'.
+   * @see org.example.domainmodel.domainmodel.Modifier#getVisibility()
+   * @see #getModifier()
+   * @generated
+   */
+  EAttribute getModifier_Visibility();
+
+  /**
+   * Returns the meta object for enum '{@link org.example.domainmodel.domainmodel.Visibility <em>Visibility</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Visibility</em>'.
+   * @see org.example.domainmodel.domainmodel.Visibility
+   * @generated
+   */
+  EEnum getVisibility();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -668,12 +778,22 @@ public interface DomainmodelPackage extends EPackage
     EClass FEATURE = eINSTANCE.getFeature();
 
     /**
+     * The meta object literal for the '{@link org.example.domainmodel.domainmodel.impl.ModifierImpl <em>Modifier</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.example.domainmodel.domainmodel.impl.ModifierImpl
+     * @see org.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getModifier()
+     * @generated
+     */
+    EClass MODIFIER = eINSTANCE.getModifier();
+
+    /**
      * The meta object literal for the '<em><b>Many</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FEATURE__MANY = eINSTANCE.getFeature_Many();
+    EAttribute MODIFIER__MANY = eINSTANCE.getModifier_Many();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -681,7 +801,7 @@ public interface DomainmodelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FEATURE__NAME = eINSTANCE.getFeature_Name();
+    EAttribute MODIFIER__NAME = eINSTANCE.getModifier_Name();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' reference feature.
@@ -689,7 +809,41 @@ public interface DomainmodelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FEATURE__TYPE = eINSTANCE.getFeature_Type();
+    EReference MODIFIER__TYPE = eINSTANCE.getModifier_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Static</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODIFIER__STATIC = eINSTANCE.getModifier_Static();
+
+    /**
+     * The meta object literal for the '<em><b>Final</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODIFIER__FINAL = eINSTANCE.getModifier_Final();
+
+    /**
+     * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODIFIER__VISIBILITY = eINSTANCE.getModifier_Visibility();
+
+    /**
+     * The meta object literal for the '{@link org.example.domainmodel.domainmodel.Visibility <em>Visibility</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.example.domainmodel.domainmodel.Visibility
+     * @see org.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getVisibility()
+     * @generated
+     */
+    EEnum VISIBILITY = eINSTANCE.getVisibility();
 
   }
 

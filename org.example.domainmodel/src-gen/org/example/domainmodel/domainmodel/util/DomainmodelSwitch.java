@@ -136,6 +136,14 @@ public class DomainmodelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DomainmodelPackage.MODIFIER:
+      {
+        Modifier modifier = (Modifier)theEObject;
+        T result = caseModifier(modifier);
+        if (result == null) result = caseFeature(modifier);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -264,6 +272,22 @@ public class DomainmodelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFeature(Feature object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Modifier</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Modifier</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseModifier(Modifier object)
   {
     return null;
   }

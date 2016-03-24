@@ -5,6 +5,7 @@ package org.example.domainmodel.domainmodel.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -18,8 +19,10 @@ import org.example.domainmodel.domainmodel.DomainmodelPackage;
 import org.example.domainmodel.domainmodel.Entity;
 import org.example.domainmodel.domainmodel.Feature;
 import org.example.domainmodel.domainmodel.Import;
+import org.example.domainmodel.domainmodel.Modifier;
 import org.example.domainmodel.domainmodel.PackageDeclaration;
 import org.example.domainmodel.domainmodel.Type;
+import org.example.domainmodel.domainmodel.Visibility;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,6 +87,20 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
    * @generated
    */
   private EClass featureEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass modifierEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum visibilityEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -303,9 +320,9 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFeature_Many()
+  public EClass getModifier()
   {
-    return (EAttribute)featureEClass.getEStructuralFeatures().get(0);
+    return modifierEClass;
   }
 
   /**
@@ -313,9 +330,9 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFeature_Name()
+  public EAttribute getModifier_Many()
   {
-    return (EAttribute)featureEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)modifierEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -323,9 +340,59 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFeature_Type()
+  public EAttribute getModifier_Name()
   {
-    return (EReference)featureEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)modifierEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModifier_Type()
+  {
+    return (EReference)modifierEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModifier_Static()
+  {
+    return (EAttribute)modifierEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModifier_Final()
+  {
+    return (EAttribute)modifierEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModifier_Visibility()
+  {
+    return (EAttribute)modifierEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getVisibility()
+  {
+    return visibilityEEnum;
   }
 
   /**
@@ -380,9 +447,17 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
     createEReference(entityEClass, ENTITY__FEATURES);
 
     featureEClass = createEClass(FEATURE);
-    createEAttribute(featureEClass, FEATURE__MANY);
-    createEAttribute(featureEClass, FEATURE__NAME);
-    createEReference(featureEClass, FEATURE__TYPE);
+
+    modifierEClass = createEClass(MODIFIER);
+    createEAttribute(modifierEClass, MODIFIER__MANY);
+    createEAttribute(modifierEClass, MODIFIER__NAME);
+    createEReference(modifierEClass, MODIFIER__TYPE);
+    createEAttribute(modifierEClass, MODIFIER__STATIC);
+    createEAttribute(modifierEClass, MODIFIER__FINAL);
+    createEAttribute(modifierEClass, MODIFIER__VISIBILITY);
+
+    // Create enums
+    visibilityEEnum = createEEnum(VISIBILITY);
   }
 
   /**
@@ -419,6 +494,7 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
     typeEClass.getESuperTypes().add(this.getAbstractElement());
     dataTypeEClass.getESuperTypes().add(this.getType());
     entityEClass.getESuperTypes().add(this.getType());
+    modifierEClass.getESuperTypes().add(this.getFeature());
 
     // Initialize classes and features; add operations and parameters
     initEClass(domainmodelEClass, Domainmodel.class, "Domainmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -443,9 +519,20 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
     initEReference(getEntity_Features(), this.getFeature(), null, "features", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFeature_Many(), ecorePackage.getEBoolean(), "many", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFeature_Name(), ecorePackage.getEString(), "name", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFeature_Type(), this.getType(), null, "type", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(modifierEClass, Modifier.class, "Modifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getModifier_Many(), ecorePackage.getEBoolean(), "many", null, 0, 1, Modifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModifier_Name(), ecorePackage.getEString(), "name", null, 0, 1, Modifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModifier_Type(), this.getType(), null, "type", null, 0, 1, Modifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModifier_Static(), ecorePackage.getEBoolean(), "static", null, 0, 1, Modifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModifier_Final(), ecorePackage.getEString(), "final", null, 0, 1, Modifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModifier_Visibility(), this.getVisibility(), "visibility", null, 0, 1, Modifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(visibilityEEnum, Visibility.class, "Visibility");
+    addEEnumLiteral(visibilityEEnum, Visibility.PUBLIC);
+    addEEnumLiteral(visibilityEEnum, Visibility.PRIVATE);
+    addEEnumLiteral(visibilityEEnum, Visibility.PROTECTED);
 
     // Create resource
     createResource(eNS_URI);

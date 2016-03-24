@@ -10,6 +10,7 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -20,14 +21,12 @@ import org.example.domainmodel.services.DomainmodelGrammarAccess;
 public class DomainmodelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DomainmodelGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Entity_PrivateKeyword_1_q;
-	protected AbstractElementAlias match_Entity_PublicKeyword_0_q;
+	protected AbstractElementAlias match_Entity___PrivateKeyword_0_1_or_PublicKeyword_0_0__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DomainmodelGrammarAccess) access;
-		match_Entity_PrivateKeyword_1_q = new TokenAlias(false, true, grammarAccess.getEntityAccess().getPrivateKeyword_1());
-		match_Entity_PublicKeyword_0_q = new TokenAlias(false, true, grammarAccess.getEntityAccess().getPublicKeyword_0());
+		match_Entity___PrivateKeyword_0_1_or_PublicKeyword_0_0__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getEntityAccess().getPrivateKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getEntityAccess().getPublicKeyword_0_0()));
 	}
 	
 	@Override
@@ -42,33 +41,20 @@ public class DomainmodelSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Entity_PrivateKeyword_1_q.equals(syntax))
-				emit_Entity_PrivateKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Entity_PublicKeyword_0_q.equals(syntax))
-				emit_Entity_PublicKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_Entity___PrivateKeyword_0_1_or_PublicKeyword_0_0__q.equals(syntax))
+				emit_Entity___PrivateKeyword_0_1_or_PublicKeyword_0_0__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Ambiguous syntax:
-	 *     'private'?
+	 *     ('public' | 'private')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) 'public'? (ambiguity) 'entity' name=ID
+	 *     (rule start) (ambiguity) 'entity' name=ID
 	 */
-	protected void emit_Entity_PrivateKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'public'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) 'private'? 'entity' name=ID
-	 */
-	protected void emit_Entity_PublicKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Entity___PrivateKeyword_0_1_or_PublicKeyword_0_0__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -18,8 +18,8 @@ import org.example.domainmodel.domainmodel.DataType;
 import org.example.domainmodel.domainmodel.Domainmodel;
 import org.example.domainmodel.domainmodel.DomainmodelPackage;
 import org.example.domainmodel.domainmodel.Entity;
-import org.example.domainmodel.domainmodel.Feature;
 import org.example.domainmodel.domainmodel.Import;
+import org.example.domainmodel.domainmodel.Modifier;
 import org.example.domainmodel.domainmodel.PackageDeclaration;
 import org.example.domainmodel.services.DomainmodelGrammarAccess;
 
@@ -46,12 +46,19 @@ public class DomainmodelSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case DomainmodelPackage.ENTITY:
 				sequence_Entity(context, (Entity) semanticObject); 
 				return; 
-			case DomainmodelPackage.FEATURE:
-				sequence_Feature(context, (Feature) semanticObject); 
-				return; 
 			case DomainmodelPackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
 				return; 
+			case DomainmodelPackage.MODIFIER:
+				if (rule == grammarAccess.getFeatureRule()) {
+					sequence_Feature_Modifier(context, (Modifier) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getModifierRule()) {
+					sequence_Modifier(context, (Modifier) semanticObject); 
+					return; 
+				}
+				else break;
 			case DomainmodelPackage.PACKAGE_DECLARATION:
 				sequence_PackageDeclaration(context, (PackageDeclaration) semanticObject); 
 				return; 
@@ -108,12 +115,12 @@ public class DomainmodelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
-	 *     Feature returns Feature
+	 *     Feature returns Modifier
 	 *
 	 * Constraint:
-	 *     (many?='many'? name=ID type=[Type|QualifiedName])
+	 *     ((static?='static' | final='final' | visibility=Visibility)* many?='many'? name=ID type=[Type|QualifiedName])
 	 */
-	protected void sequence_Feature(ISerializationContext context, Feature semanticObject) {
+	protected void sequence_Feature_Modifier(ISerializationContext context, Modifier semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -134,6 +141,18 @@ public class DomainmodelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Modifier returns Modifier
+	 *
+	 * Constraint:
+	 *     (static?='static' | final='final' | visibility=Visibility)*
+	 */
+	protected void sequence_Modifier(ISerializationContext context, Modifier semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
