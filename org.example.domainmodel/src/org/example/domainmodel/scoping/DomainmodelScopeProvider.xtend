@@ -3,6 +3,9 @@
  */
 package org.example.domainmodel.scoping
 
+import org.eclipse.xtext.scoping.Scopes
+import org.eclipse.xtext.scoping.IScope
+
 
 /**
  * This class contains custom scoping description.
